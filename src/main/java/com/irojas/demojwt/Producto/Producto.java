@@ -6,6 +6,8 @@ import java.util.Date;
 import com.irojas.demojwt.Proveedor.Proveedor;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +19,8 @@ import lombok.Data;
 @Table(name = "Producto")
 public class Producto {
 	@Id
-	public int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Integer id;
 	public String codPro;
 	public String nomPro;
 	public int proveedor;

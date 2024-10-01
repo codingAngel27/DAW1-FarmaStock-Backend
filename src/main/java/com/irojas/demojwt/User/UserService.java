@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+	
     private final UserRepository userRepository; 
 
     @Transactional

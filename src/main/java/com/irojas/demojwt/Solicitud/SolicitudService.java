@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.irojas.demojwt.Proveedor.Proveedor;
-
 @Service
 public class SolicitudService {
 	
@@ -23,6 +21,10 @@ public class SolicitudService {
 	public List<Solicitud>listarSolicitud(){
 		
 		return reposoli.findAll();
+	}
+	
+	public Solicitud obtenerSolicitud(int id) {
+		return reposoli.findById(id).get();
 	}
 
 }

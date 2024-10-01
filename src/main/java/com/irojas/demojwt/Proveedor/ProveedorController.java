@@ -17,37 +17,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/proveedor")
+@RequestMapping("/auth/proveedor")
 @CrossOrigin(origins ="http://localhost:4200" )
 public class ProveedorController {
 	
 	@Autowired
 	private ProveedorService servicio;
 	
-	@GetMapping
+	@GetMapping("listado")
 	public ResponseEntity<List<Proveedor> > listarProveedor(){
 		return ResponseEntity.ok(servicio.listarPorveedor());
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Proveedor>  obtenerProveedor(@PathVariable int id) {
 		
 		return ResponseEntity.ok(servicio.obtenerProveedor(id));
 	}
-	@GetMapping("/buscar")
+	@GetMapping("buscar")
 	public ResponseEntity<List<Proveedor>>  buscarProveedor(@RequestParam String name) {
 		
 		return ResponseEntity.ok(servicio.buscarProveedor(name));
 	}
 	
-	@PostMapping
+	@PostMapping("registrar")
 	public ResponseEntity<Proveedor> crearProveedor(@RequestBody Proveedor p) {
 		Proveedor nuevo = servicio.crearProveedor(p);
 		return new ResponseEntity<>(nuevo,HttpStatus.CREATED);
 	}
 
 	
-	@PutMapping("/{id}")
+	@PutMapping("{id}")
 	public ResponseEntity<?> actualizarProveedo(
 			@PathVariable int id,
 			@RequestBody Proveedor prov){
